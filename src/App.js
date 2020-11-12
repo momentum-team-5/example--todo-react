@@ -59,16 +59,11 @@ function App () {
       <ul className='list pl0' id='todos'>
         {todos.map(todo => (
           shouldShowTodoItem(todo) && (
-            <li key={todo.id} className='TodoItem'>
-              <label htmlFor={'todo-' + todo.id}>
-                <input
-                  id={'todo-' + todo.id}
-                  type='checkbox'
-                  checked={todo.done}
-                  onChange={event => updateTodoDone(todo.id, event.target.checked)}
-                /> {todo.task}
-              </label>
-            </li>
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              handleClick={event => updateTodoDone(todo.id, event.target.checked)}
+            />
           )
         ))}
       </ul>
